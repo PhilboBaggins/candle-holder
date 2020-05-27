@@ -1,0 +1,4 @@
+[submodule "Model and cutting guide/openscad-common"]
+	path = Model and cutting guide/openscad-common
+	url = https://github.com/PhilboBaggins/openscad-common.git
+	branch = master
