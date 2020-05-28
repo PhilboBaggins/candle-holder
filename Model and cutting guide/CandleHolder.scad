@@ -97,5 +97,3 @@ module CandleHolder2D()
         cube([holderLength(), HOLDER_WIDTH, HOLDER_HEIGHT - CANDLE_HEIGHT]);
     }
 }
-
-CandleHolder();
