@@ -47,8 +47,8 @@ module MultipleCandles()
     translate([0, HOLDER_WIDTH / 2, HOLDER_HEIGHT - CANDLE_HEIGHT])
     for (n = [0 : NUM_CANDLES - 1])
     {
-        x = (n + 0.5) * CANDLE_SPACING;
-        translate([x, 0, 0]) Candle();
+        translate([(n + 0.5) * CANDLE_SPACING, 0, 0])
+        children();
     }
 }
 
@@ -59,13 +59,21 @@ module CandleHolder(showCandles = SHOW_CANDLES)
         color(HOLDER_COLOUR)
         cube([holderLength(), HOLDER_WIDTH, HOLDER_HEIGHT]);
 
-        MultipleCandles();
+        MultipleCandles()
+        Candle();
     }
 
     if (showCandles)
     {
         translate([0, 0, 0.1])
-        MultipleCandles();
+        MultipleCandles()
+        Candle();
+    }
+    else
+    {
+        // Show center points of candle holes
+        MultipleCandles()
+        cylinder(r = 0.5, h = CANDLE_HEIGHT);;
     }
 
     if (SHOW_MEASUREMENTS)
@@ -91,7 +99,7 @@ module CandleHolder2D()
     projection()
     difference()
     {
-        CandleHolder(showCandles=false);
+        CandleHolder(showCandles = false);
 
         // Cut off bottom, so that the candle holes go all the way through
         cube([holderLength(), HOLDER_WIDTH, HOLDER_HEIGHT - CANDLE_HEIGHT]);
