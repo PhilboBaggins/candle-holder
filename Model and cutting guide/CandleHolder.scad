@@ -1,3 +1,5 @@
+use <openscad-common/CenteredText.scad>
+
 $fn = 60;
 
 CANDLE_RADIUS = 37.5 / 2;
@@ -71,13 +73,13 @@ module CandleHolder(showCandles = SHOW_CANDLES)
         // Holder length
         linear_extrude(1)
         translate([holderLength() / 2, -20, 0])
-        text(str(holderLength(), " mm"));
+        CenteredText(str(holderLength(), " mm"), [holderLength() / 4, 20]);
 
         // Holder length
         linear_extrude(1)
         rotate([0, 0, 270])
         translate([HOLDER_WIDTH / -2, -20, 0])
-        text(str(HOLDER_WIDTH, " mm"));
+        CenteredText(str(HOLDER_WIDTH, " mm"), [HOLDER_WIDTH, 20]);
 
         // TODO: Show candle diameter
         // TODO: Think about cutting candle holes a little larger than the candle actually is
@@ -96,4 +98,4 @@ module CandleHolder2D()
     }
 }
 
-CandleHolder2D();
+CandleHolder();
